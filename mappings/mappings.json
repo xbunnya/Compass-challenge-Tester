@@ -1,0 +1,22 @@
+
+{
+  "request": {
+    "method": "GET",
+    "url": "/usuarios"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "name": "Neeko",
+        "email": "neeko@teste.com",
+        "password": "teste",
+        "administrador": "true"
+      }
+    ]
+  }
+}
