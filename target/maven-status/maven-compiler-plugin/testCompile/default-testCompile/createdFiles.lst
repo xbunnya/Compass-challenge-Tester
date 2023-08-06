@@ -1,0 +1,8 @@
+sicred\services\VariaveisFaker.class
+sicred\test\simulacoes\GETsimulacoesTest.class
+sicred\services\BaseRest.class
+sicred\test\restricoes\GETrestricoesTest.class
+sicred\services\ConfigTeste.class
+sicred\test\simulacoes\POSTsimulacoesTest.class
+sicred\services\Endpoints.class
+sicred\test\simulacoes\SimulacaoPayload.class

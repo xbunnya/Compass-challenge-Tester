@@ -9,10 +9,9 @@ public class VariaveisFaker {
     final Faker faker = new Faker();
     public String nome = faker.name().fullName();
     public String email = faker.internet().emailAddress();
-    public String cpf = faker.number().digits(11);
+    public String cpf = faker.number().digits(11).toString();
     public long valor = faker.number().numberBetween(1000L, 40001L);
     public boolean seguro = faker.bool().bool();
     public String nomeProduto = faker.book().title();
     public int parcelas = faker.number().numberBetween(2, 48);
-
 }
