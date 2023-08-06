@@ -16,23 +16,25 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
+import org.modelmapper.ModelMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
 
-@Epic("Testes de /simulacoes método GET")
-public class GETsimulacoesTest extends BaseRest {
+@Epic("Testes de /simulacoes método POST")
+public class POSTsimulacoesTest extends BaseRest {
+    VariaveisFaker variaveisFaker = new VariaveisFaker();
+    ModelMapper modelMapper = new ModelMapper();
 
     @Test
-    public void listaSimulacoes() {
-        Response response = getS(SIMULACOES);
-        response.then().assertThat().statusCode(200);
+    public void criaSimulacao() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(201);
         assertThat(response.asString(),
                 JsonSchemaValidator
-                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/GET/get_200.json"));
-
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_201.json"));
     }
-
 }
