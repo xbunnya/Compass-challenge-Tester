@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
 
@@ -44,18 +44,21 @@ public class POSTsimulacoesTest extends BaseRest {
         System.out.println(simulacaoID);
     }
 
+    @Tag("Campo vazio")
     @Test
     public void criaSimulacaoNomeNulo() {
         SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
         simulacao.setNome(null);
 
         Response response = post(simulacao, SIMULACOES);
-        response.then().assertThat().statusCode(400);
+        response.then().assertThat().statusCode(400)
+                .body("erros.nome", equalTo("Nome não pode ser vazio"));
         assertThat(response.asString(),
                 JsonSchemaValidator
-                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_400.json"));
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_nome_400.json"));
     }
 
+    @Tag("Campo vazio")
     @Test
     public void criaSimulacaoSemNome() {
         SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
@@ -65,6 +68,33 @@ public class POSTsimulacoesTest extends BaseRest {
         response.then().assertThat().statusCode(400);
         assertThat(response.asString(),
                 JsonSchemaValidator
-                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_400.json"));
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_nome_400.json"));
+    }
+
+    @Tag("Campo nulo")
+    @Test
+    public void criaSimulacaoCPFNulo() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setCpf(null);
+
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400)
+                .body("erros.cpf", equalTo("CPF não pode ser vazio"));
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_cpf_400.json"));
+    }
+
+    @Tag("Campo vazio")
+    @Test
+    public void criaSimulacaoSemCPF() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setCpf(" ");
+
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400);
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_cpf_400.json"));
     }
 }
