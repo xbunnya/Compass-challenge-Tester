@@ -26,6 +26,8 @@ import static io.restassured.RestAssured.given;
 public class POSTsimulacoesTest extends BaseRest {
     VariaveisFaker variaveisFaker = new VariaveisFaker();
     ModelMapper modelMapper = new ModelMapper();
+    private String simulacaoID;
+    private String cpf;
 
     @Test
     public void criaSimulacao() {
@@ -36,5 +38,33 @@ public class POSTsimulacoesTest extends BaseRest {
         assertThat(response.asString(),
                 JsonSchemaValidator
                         .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_201.json"));
+        simulacaoID = response.jsonPath().getString("_id");
+        cpf = response.jsonPath().getString("cpf");
+        System.out.println(cpf);
+        System.out.println(simulacaoID);
+    }
+
+    @Test
+    public void criaSimulacaoNomeNulo() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setNome(null);
+
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400);
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_400.json"));
+    }
+
+    @Test
+    public void criaSimulacaoSemNome() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setNome(" ");
+
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400);
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_400.json"));
     }
 }
