@@ -65,7 +65,8 @@ public class POSTsimulacoesTest extends BaseRest {
         simulacao.setNome(" ");
 
         Response response = post(simulacao, SIMULACOES);
-        response.then().assertThat().statusCode(400);
+        response.then().assertThat().statusCode(400)
+                .body("erros.nome", equalTo("Nome não pode ser vazio"));
         assertThat(response.asString(),
                 JsonSchemaValidator
                         .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_nome_400.json"));
@@ -92,9 +93,36 @@ public class POSTsimulacoesTest extends BaseRest {
         simulacao.setCpf(" ");
 
         Response response = post(simulacao, SIMULACOES);
-        response.then().assertThat().statusCode(400);
+        response.then().assertThat().statusCode(400)
+                .body("erros.cpf", equalTo("CPF não pode ser vazio"));
         assertThat(response.asString(),
                 JsonSchemaValidator
                         .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_cpf_400.json"));
+    }
+
+    @Tag("Campo nulo")
+    @Test
+    public void CriaSimulacaoEmailNulo() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setEmail(null);
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400)
+                .body("erros.email", equalTo("E-mail não deve ser vazio"));
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_email_400.json"));
+    }
+
+    @Tag("Campo vazio")
+    @Test
+    public void CriaSimulacaoEmailVazio() {
+        SimulacaoPayload simulacao = modelMapper.map(variaveisFaker, SimulacaoPayload.class);
+        simulacao.setEmail(" ");
+        Response response = post(simulacao, SIMULACOES);
+        response.then().assertThat().statusCode(400)
+                .body("erros.email", equalTo("E-mail deve ser um e-mail válido"));
+        assertThat(response.asString(),
+                JsonSchemaValidator
+                        .matchesJsonSchemaInClasspath("sicred/resources/schemas/simulacoes/POST/post_email_400.json"));
     }
 }
