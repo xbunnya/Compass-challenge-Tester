@@ -1,3 +1,8 @@
 .allure/
 .history/
 .apt_generated/
+.target/
+.apt_generated_tests/
+.allure/
+.allure-2.18.1/
+

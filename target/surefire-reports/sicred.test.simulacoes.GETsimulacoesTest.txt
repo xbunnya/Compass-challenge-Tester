@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: sicred.test.simulacoes.GETsimulacoesTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in sicred.test.simulacoes.GETsimulacoesTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.084 s <<< FAILURE! - in sicred.test.simulacoes.GETsimulacoesTest
+listaSimulacoes  Time elapsed: 0.083 s  <<< ERROR!
+java.lang.IllegalArgumentException: Schema to use cannot be null
+	at sicred.test.simulacoes.GETsimulacoesTest.listaSimulacoes(GETsimulacoesTest.java:34)
+

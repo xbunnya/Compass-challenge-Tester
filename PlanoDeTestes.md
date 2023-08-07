@@ -29,33 +29,41 @@
 
 -  CT_001 Inserir uma nova simulação seguindo todos os padrões.
 - 	CT_002 Inserir uma simulação com cpf inválido.
-- 	CT_003 Inserir uma simulação com o campo "seguro" em branco.
--	CT_004 Inserir uma simulação com o campo "cpf" em branco.
--	CT_005 Inserir uma simulação com campo "nome" em branco.
--	CT_006 Inserir uma simulação com o campo "parcelas" em branco.
--	CT_007 Inserir uma simulação com o campo "valor" em branco.
+- 	CT_003 Inserir uma simulação com o campo "seguro" vazio.
+-	CT_004 Inserir uma simulação com o campo "cpf" vazio.
+-	CT_005 Inserir uma simulação com campo "nome" vazio.
+-	CT_006 Inserir uma simulação com o campo "parcelas" vazio.
+-	CT_007 Inserir uma simulação com o campo "valor" vazio.
 -	CT_008 Consultar uma restrição por cpf que não consta no banco.
--	CT_009 Consultar uma restrição por cpf.
--	CT_010 Inserir uma simulação com cpf restringido.
--  CT_011 Atualizar uma simulação existente.
--	CT_012 Atualizar uma simulação deixando dados em branco.
--  CT_013 Atualizar uma simulação colocando um cpf já utilizado.
--  CT_014 Inserir simulação com empréstimo menor que R$1.000.
--  CT_015 Inserir simulação com empréstimo maior que R$40.000.
--	CT_016 Inserir simulação com parcela menor que 2.
--	CT_017 Inserir simulação com parcela maior que 48.
--	CT_018 Deletar simulação.
--	CT_019 Deletar simulação.
--	CT_020 Chamar todas as simulações existentes.
+- 	CT_009 Inserir uma simulação com o campo "seguro" nulo.
+-	CT_010 Inserir uma simulação com o campo "cpf" nulo.
+-	CT_011 Inserir uma simulação com campo "nome" nulo.
+-	CT_012 Inserir uma simulação com o campo "parcelas" nulo.
+-	CT_013 Inserir uma simulação com o campo "valor" nulo.
+-	CT_014 Consultar uma restrição por cpf sem dados.
+-	CT_015 Consultar uma restrição por cpf.
+-	CT_016 Inserir uma simulação com cpf restringido.
+-  CT_017 Atualizar uma simulação existente.
+-	CT_019 Atualizar uma simulação deixando dados em branco.
+-  CT_020 Atualizar uma simulação deixando dados vazios.
+-  CT_021 Atualizar uma simulação colocando um cpf já utilizado.
+-  CT_022 Inserir simulação com empréstimo menor que R$1.000.
+-  CT_023 Inserir simulação com empréstimo maior que R$40.000.
+-	CT_024 Inserir simulação com parcela menor que 2.
+-	CT_025 Inserir simulação com parcela maior que 48.
+-	CT_026 Deletar simulação inexistente.
+-	CT_027 Deletar simulação.
+-	CT_028 Chamar todas as simulações existentes.
 
 
 ## Testes candidatos à automação:
 -  CT_001  Inserir nova simulação.
 -  CT_010 Inserir uma simulação com cpf restringido
--  CT_012 Atualizar uma simulação deixando dados em branco.
--  CT_014 Inserir simulação com empréstimo menor que R$1.000.
--  CT_015 Inserir simulação com empréstimo maior que R$40.000.
--  CT_016 Inserir simulação com parcela menor que 2.
--  CT_017 Inserir simulação com parcela maior que 48.
--  CT_020 Deletar simulação. 
--  CT_019 Chamar todas as simulações existentes.
+-  CT_019 Atualizar uma simulação deixando dados em branco.
+-  CT_020 Atualizar uma simulação deixando dados vazios.
+-  CT_022 Inserir simulação com empréstimo menor que R$1.000.
+-  CT_023 Inserir simulação com empréstimo maior que R$40.000.
+-  CT_024 Inserir simulação com parcela menor que 2.
+-  CT_025 Inserir simulação com parcela maior que 48.
+-  CT_027 Deletar simulação. 
+-  CT_028 Chamar todas as simulações existentes.

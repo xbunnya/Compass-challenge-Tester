@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: sicred.test.simulacoes.POSTsimulacoesTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.59 s - in sicred.test.simulacoes.POSTsimulacoesTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.858 s <<< FAILURE! - in sicred.test.simulacoes.POSTsimulacoesTest
+criaSimulacao  Time elapsed: 0.457 s  <<< ERROR!
+java.lang.IllegalArgumentException: Schema to use cannot be null
+	at sicred.test.simulacoes.POSTsimulacoesTest.criaSimulacao(POSTsimulacoesTest.java:38)
+
